@@ -6,6 +6,12 @@ function makeRace(round: string, date: string, time: string): Race {
   return { round, date, time } as Race;
 }
 
+const races = [
+  makeRace("1", "2026-06-05", "04:00:00Z"),
+  makeRace("2", "2026-06-12", "04:00:00Z"),
+  makeRace("3", "2026-06-29", "04:00:00Z"),
+];
+
 describe("nextRace", () => {
   it("returns undefined on an empty list", () => {
     const result = nextRace([], new Date("2026-03-08T04:00:00Z"));
@@ -23,18 +29,49 @@ describe("nextRace", () => {
   });
 
   it("excludes a race starting exactly at the given time", () => {
+    const result = nextRace(races, new Date("2026-06-05T04:00:00Z"));
+
+    expect(result).toEqual({
+      round: "2",
+      date: "2026-06-12",
+      time: "04:00:00Z",
+    });
+  });
+
+  it("returns the closest race to the given time", () => {
+    const result = nextRace(races, new Date("2026-06-27T04:00:00Z"));
+
+    expect(result).toEqual({
+      round: "3",
+      date: "2026-06-29",
+      time: "04:00:00Z",
+    });
+  });
+
+  it("returns the first race if the given time is before the all time", () => {
+    const result = nextRace(races, new Date("2026-05-01T04:00:00Z"));
+
+    expect(result).toEqual({
+      round: "1",
+      date: "2026-06-05",
+      time: "04:00:00Z",
+    });
+  });
+
+  it("check date and times params", () => {
     const result = nextRace(
       [
-        makeRace("1", "2026-03-08", "04:00:00Z"),
-        makeRace("2", "2026-03-15", "04:00:00Z"),
+        makeRace("1", "2026-01-01", "04:00:00Z"),
+        makeRace("2", "2026-01-01", "10:00:00Z"),
+        makeRace("3", "2026-01-05", "04:00:00Z"),
       ],
-      new Date("2026-03-08T04:00:00Z"),
+      new Date("2026-01-01T08:00:00Z"),
     );
 
     expect(result).toEqual({
       round: "2",
-      date: "2026-03-15",
-      time: "04:00:00Z",
+      date: "2026-01-01",
+      time: "10:00:00Z",
     });
   });
 });
