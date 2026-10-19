@@ -38,7 +38,7 @@ describe("nextRace", () => {
     });
   });
 
-  it("returns the closest race to the given time", () => {
+  it("returns the first race after the given time", () => {
     const result = nextRace(races, new Date("2026-06-27T04:00:00Z"));
 
     expect(result).toEqual({
@@ -48,7 +48,7 @@ describe("nextRace", () => {
     });
   });
 
-  it("returns the first race if the given time is before the all time", () => {
+  it("returns the first race when the given time is before the season starts", () => {
     const result = nextRace(races, new Date("2026-05-01T04:00:00Z"));
 
     expect(result).toEqual({
@@ -58,7 +58,7 @@ describe("nextRace", () => {
     });
   });
 
-  it("check date and times params", () => {
+  it("uses the start time, not just the date, to pick the next race", () => {
     const result = nextRace(
       [
         makeRace("1", "2026-01-01", "04:00:00Z"),
