@@ -1,0 +1,16 @@
+import { getTimeLeft } from "@/lib/countdown";
+import { useState, useEffect } from "react";
+
+export function useCountdown(target: Date) {
+  const [now, setNow] = useState(() => new Date());
+
+  useEffect(() => {
+    const id = setInterval(() => {
+      setNow(new Date());
+    }, 1000);
+
+    return () => clearInterval(id);
+  }, []);
+
+  return getTimeLeft(target, now);
+}
