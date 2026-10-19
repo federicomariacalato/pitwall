@@ -1,11 +1,17 @@
 import { Flag } from "lucide-react";
 import type { Race } from "@/api/jolpica/types";
-import { Card, CardHeader, CardContent, CardTitle, CardDescription } from "@/components/ui/card";
+import {
+  Card,
+  CardHeader,
+  CardContent,
+  CardTitle,
+  CardDescription,
+} from "@/components/ui/card";
 import { useCountdown } from "@/hooks/useCountdown";
 import { sessionStart } from "@/api/jolpica/calendar";
 import { cn } from "@/lib/utils";
 
-type NextRaceCardProps = {
+type NextRaceContentProps = {
   race: Race;
 };
 
@@ -23,7 +29,11 @@ const startFormat = new Intl.DateTimeFormat("en-GB", {
   minute: "2-digit",
 });
 
-function CountdownUnit({ value, label, highlight = false }: CountdownUnitProps) {
+function CountdownUnit({
+  value,
+  label,
+  highlight = false,
+}: CountdownUnitProps) {
   return (
     <div className="flex items-baseline gap-0.5">
       <span
@@ -34,12 +44,14 @@ function CountdownUnit({ value, label, highlight = false }: CountdownUnitProps) 
       >
         {String(value).padStart(2, "0")}
       </span>
-      <span className="text-xs font-medium text-muted-foreground uppercase">{label}</span>
+      <span className="text-xs font-medium text-muted-foreground uppercase">
+        {label}
+      </span>
     </div>
   );
 }
 
-export function NextRaceCard({ race }: NextRaceCardProps) {
+export function NextRaceContent({ race }: NextRaceContentProps) {
   const startsAt = sessionStart(race);
   const countdown = useCountdown(startsAt);
   const { Location } = race.Circuit;
@@ -57,7 +69,8 @@ export function NextRaceCard({ race }: NextRaceCardProps) {
           {race.raceName}
         </CardTitle>
         <CardDescription className="truncate">
-          {Location.locality}, {Location.country} · {startFormat.format(startsAt)}
+          {Location.locality}, {Location.country} ·{" "}
+          {startFormat.format(startsAt)}
         </CardDescription>
       </CardHeader>
       <CardContent className="flex shrink-0 gap-3 sm:pl-0">
