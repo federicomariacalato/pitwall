@@ -1,6 +1,6 @@
 import { afterEach, describe, expect, it, vi } from "vitest";
-import { fetchCalendar } from "./calendar.ts";
-import { isJolpicaError } from "./client.ts";
+import { fetchCalendar } from "./calendarServices";
+import { isJolpicaError } from "../client";
 
 function mockFetch(response: Partial<Response> & { json?: () => Promise<unknown> }) {
   const fetchMock = vi.fn().mockResolvedValue(response);

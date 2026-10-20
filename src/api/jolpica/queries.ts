@@ -1,5 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
-import { fetchCalendar } from "./calendar.ts";
+import { fetchCalendar } from "./services/calendarServices";
 
 const HOUR = 60 * 60 * 1000;
 
