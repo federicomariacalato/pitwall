@@ -1,7 +1,7 @@
 import { Trophy } from "lucide-react";
 import { useCalendar } from "@/api/jolpica/queries";
 import { NextRaceContent } from "./NextRaceContent";
-import { nextRace } from "@/api/jolpica/nextRace";
+import { nextRace } from "@/api/jolpica/utils/nextRace";
 import { useState } from "react";
 import { QueryErrorState } from "../QueryErrorState";
 import {

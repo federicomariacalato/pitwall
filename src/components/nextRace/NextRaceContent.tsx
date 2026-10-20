@@ -8,7 +8,7 @@ import {
   CardDescription,
 } from "@/components/ui/card";
 import { useCountdown } from "@/hooks/useCountdown";
-import { sessionStart } from "@/api/jolpica/calendar";
+import { sessionStart } from "@/api/jolpica/utils/sessionStart";
 import { cn } from "@/lib/utils";
 
 type NextRaceContentProps = {
