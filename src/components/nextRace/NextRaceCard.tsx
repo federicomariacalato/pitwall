@@ -1,5 +1,5 @@
 import { Trophy } from "lucide-react";
-import { useCalendar } from "@/api/jolpica/queries";
+import { useCalendar } from "@/api/jolpica/hooks/useCalendar";
 import { NextRaceContent } from "./NextRaceContent";
 import { nextRace } from "@/api/jolpica/utils/nextRace";
 import { useState } from "react";
