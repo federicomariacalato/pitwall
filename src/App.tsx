@@ -1,17 +1,23 @@
-import { Header } from "./components/layout/Header";
-import { MobileNavbar } from "./components/layout/MobileNavbar";
-import { NextRaceCard } from "./components/nextRace/NextRaceCard";
+import { Route, Routes } from "react-router-dom";
+import { Layout } from "./components/layout/Layout";
+import { Home } from "./pages/Home";
+import { Calendar } from "./pages/Calendar";
+import { Standings } from "./pages/Standings";
+import { Race } from "./pages/Race";
+import { NotFound } from "./pages/NotFound";
 
 function App() {
   return (
     <>
-      <Header />
-      <main className="min-h-screen flex items-center justify-center pb-17 md:pb-0">
-        <div className="text-center space-y-2">
-          <NextRaceCard />
-        </div>
-      </main>
-      <MobileNavbar />
+      <Routes>
+        <Route element={<Layout />}>
+          <Route path="/" element={<Home />} />
+          <Route path="/calendar" element={<Calendar />} />
+          <Route path="/standings" element={<Standings />} />
+          <Route path="/race/:round" element={<Race />} />
+          <Route path="*" element={<NotFound />} />
+        </Route>
+      </Routes>
     </>
   );
 }
