@@ -20,7 +20,7 @@ export function QueryErrorState({ error, refetch }: QueryErrorStateProps) {
   return (
     <Alert
       variant="destructive"
-      className="flex w-xl max-w-[calc(100vw-2rem)] items-center gap-4 border-destructive/40 px-4 py-3 shadow-lg shadow-black/40 max-sm:flex-col max-sm:items-stretch"
+      className="flex w-full items-center gap-4 border-destructive/40 px-4 py-3.5 shadow-lg shadow-black/40 md:px-5 max-sm:flex-col max-sm:items-stretch"
     >
       <div className="flex size-10 shrink-0 items-center justify-center rounded-lg bg-destructive/15 max-sm:hidden">
         <TriangleAlert className="size-5" />
