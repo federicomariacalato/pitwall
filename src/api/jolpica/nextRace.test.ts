@@ -1,6 +1,6 @@
 import { describe, it, expect } from "vitest";
 import { nextRace } from "./nextRace";
-import type { Race } from "./types";
+import type { Race } from "./types/race.types";
 
 function makeRace(round: string, date: string, time: string): Race {
   return { round, date, time } as Race;

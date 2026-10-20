@@ -1,7 +1,4 @@
-export type SessionSlot = {
-  date: string;
-  time?: string;
-};
+import type { MRData, SessionSlot } from "./common.types";
 
 export type Circuit = {
   circuitId: string;
@@ -27,14 +24,6 @@ export type Race = SessionSlot & {
   Qualifying?: SessionSlot;
   Sprint?: SessionSlot;
   SprintQualifying?: SessionSlot;
-};
-
-export type MRData<Table> = {
-  MRData: {
-    limit: string;
-    offset: string;
-    total: string;
-  } & Table;
 };
 
 export type RaceTableResponse = MRData<{

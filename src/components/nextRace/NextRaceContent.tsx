@@ -1,5 +1,5 @@
 import { Flag } from "lucide-react";
-import type { Race } from "@/api/jolpica/types";
+import type { Race } from "@/api/jolpica/types/race.types";
 import {
   Card,
   CardHeader,
