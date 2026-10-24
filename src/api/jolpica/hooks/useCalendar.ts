@@ -1,7 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import { fetchCalendar } from "../services/calendarServices";
-
-const HOUR = 60 * 60 * 1000;
+import { HOUR } from "@/lib/time";
 
 function calendarStaleTime(season: string): number {
   const year = Number(season);
