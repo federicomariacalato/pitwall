@@ -1,12 +1,7 @@
 import { afterEach, describe, expect, it, vi } from "vitest";
 import { fetchCalendar } from "./calendarServices";
 import { isJolpicaError } from "../client";
-
-function mockFetch(response: Partial<Response> & { json?: () => Promise<unknown> }) {
-  const fetchMock = vi.fn().mockResolvedValue(response);
-  vi.stubGlobal("fetch", fetchMock);
-  return fetchMock;
-}
+import { mockFetch } from "@/test/mockFetch";
 
 afterEach(() => {
   vi.unstubAllGlobals();
@@ -14,20 +9,28 @@ afterEach(() => {
 
 describe("fetchCalendar", () => {
   it("requests the season and unwraps the races", async () => {
-    const races = [{ season: "2026", round: "1", raceName: "Australian Grand Prix" }];
+    const races = [
+      { season: "2026", round: "1", raceName: "Australian Grand Prix" },
+    ];
     const fetchMock = mockFetch({
       ok: true,
-      json: async () => ({ MRData: { RaceTable: { season: "2026", Races: races } } }),
+      json: async () => ({
+        MRData: { RaceTable: { season: "2026", Races: races } },
+      }),
     });
 
     await expect(fetchCalendar("2026")).resolves.toEqual(races);
-    expect(fetchMock.mock.calls[0][0]).toBe("https://api.jolpi.ca/ergast/f1/2026.json?limit=100");
+    expect(fetchMock.mock.calls[0][0]).toBe(
+      "https://api.jolpi.ca/ergast/f1/2026.json?limit=100",
+    );
   });
 
   it("defaults to the current season", async () => {
     const fetchMock = mockFetch({
       ok: true,
-      json: async () => ({ MRData: { RaceTable: { season: "2026", Races: [] } } }),
+      json: async () => ({
+        MRData: { RaceTable: { season: "2026", Races: [] } },
+      }),
     });
 
     await fetchCalendar();

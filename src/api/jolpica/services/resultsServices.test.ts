@@ -1,14 +1,7 @@
 import { describe, expect, it, vi, afterEach } from "vitest";
 import { fetchLastRace } from "./resultsServices";
 import type { Race } from "../types/race.types";
-
-function mockFetch(
-  response: Partial<Response> & { json?: () => Promise<unknown> },
-) {
-  const fetchMock = vi.fn().mockResolvedValue(response);
-  vi.stubGlobal("fetch", fetchMock);
-  return fetchMock;
-}
+import { mockFetch } from "@/test/mockFetch";
 
 afterEach(() => {
   vi.unstubAllGlobals();
