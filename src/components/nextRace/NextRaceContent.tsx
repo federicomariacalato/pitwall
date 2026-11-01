@@ -9,6 +9,7 @@ import {
 } from "@/components/ui/card";
 import { useCountdown } from "@/hooks/useCountdown";
 import { sessionStart } from "@/api/jolpica/utils/sessionStart";
+import { startFormat } from "@/lib/dateFormat";
 import { cn } from "@/lib/utils";
 
 type NextRaceContentProps = {
@@ -21,14 +22,6 @@ type CountdownUnitProps = {
   longLabel: string;
   highlight?: boolean;
 };
-
-const startFormat = new Intl.DateTimeFormat("en-GB", {
-  weekday: "short",
-  day: "numeric",
-  month: "short",
-  hour: "2-digit",
-  minute: "2-digit",
-});
 
 function CountdownUnit({
   value,
