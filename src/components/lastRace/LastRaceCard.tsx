@@ -2,7 +2,7 @@ import { useLastRace } from "@/api/jolpica/hooks/useLastRace";
 import { LastRaceContent } from "./LastRaceContent";
 import { QueryErrorState } from "../QueryErrorState";
 import { Flag } from "lucide-react";
-import { sectionClass } from "./sectionClass";
+import { sectionClass } from "../sectionClass";
 import {
   Card,
   CardHeader,

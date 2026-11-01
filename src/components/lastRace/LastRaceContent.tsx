@@ -14,7 +14,7 @@ import { Link } from "react-router-dom";
 import { driverName } from "@/api/jolpica/utils/driverName";
 import { cn } from "@/lib/utils";
 import { teamColor } from "@/lib/teamColors";
-import { sectionClass } from "./sectionClass";
+import { sectionClass } from "../sectionClass";
 
 type LastRaceContentProps = {
   race: RaceWithResults;
