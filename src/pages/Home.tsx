@@ -1,6 +1,7 @@
 import { ChampionshipCard } from "@/components/championship/ChampionshipCard";
 import { LastRaceCard } from "@/components/lastRace/LastRaceCard";
 import { NextRaceCard } from "@/components/nextRace/NextRaceCard";
+import { UpcomingRacesCard } from "@/components/upcomingRaces/UpcomingRacesCard";
 
 export function Home() {
   return (
@@ -10,6 +11,7 @@ export function Home() {
         <LastRaceCard />
         <ChampionshipCard />
       </div>
+      <UpcomingRacesCard />
     </div>
   );
 }
