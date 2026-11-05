@@ -13,3 +13,13 @@ export async function fetchLastRace(
   );
   return data.MRData.RaceTable.Races[0];
 }
+
+export async function fetchRaceWinners(
+  signal?: AbortSignal,
+): Promise<RaceWithResults[]> {
+  const data = await jolpicaFetch<RaceResultsResponse>(
+    "/current/results/1.json?limit=100",
+    signal,
+  );
+  return data.MRData.RaceTable.Races;
+}
